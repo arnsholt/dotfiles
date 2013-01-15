@@ -1,0 +1,12 @@
+[user]
+	name = Arne Skjærholt
+	email = arnsholt@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = current
+[alias]
+    s = status
+    d = diff

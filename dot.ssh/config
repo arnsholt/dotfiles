@@ -1,0 +1,12 @@
+Host *
+ForwardX11  no
+ForwardAgent yes
+
+Host 80.203.170.54
+User arne
+
+Host sh.titan
+ForwardX11 yes
+
+Host login.ifi
+ForwardX11 yes

@@ -1,0 +1,21 @@
+[submodule "dot.vim/bundle/vim-pathogen"]
+	path = dot.vim/bundle/vim-pathogen
+	url = https://github.com/tpope/vim-pathogen.git
+[submodule "dot.vim/bundle/vim-fugitive"]
+	path = dot.vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "dot.vim/bundle/vim-surround"]
+	path = dot.vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "dot.vim/bundle/vim-latex"]
+	path = dot.vim/bundle/vim-latex
+	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+[submodule "dot.vim/bundle/slimv.vim"]
+	path = dot.vim/bundle/slimv.vim
+	url = https://github.com/vim-scripts/slimv.vim.git
+[submodule "dot.vim/bundle/dwm.vim"]
+	path = dot.vim/bundle/dwm.vim
+	url = https://github.com/spolu/dwm.vim.git
+[submodule "dot.vim/bundle/vim-colors-solarized"]
+	path = dot.vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
