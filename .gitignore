@@ -1,7 +1,7 @@
 # Ignore ssh files we don't want to track. Although we might want to track
 # known_hosts?
-dot.ssh/known_hosts
-dot.ssh/id_*
+dot.ssh/*
+!dot.ssh/config
 # Ignore everything in dot.xmonad, exept xmonad.hs
 dot.xmonad/*
 !dot.xmonad/xmonad.hs
