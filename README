@@ -1,0 +1,4 @@
+This repository uses git submodules to track 3rd party code. To set them up,
+run:
+$ git submodule init
+$ git submodule update
