@@ -1,0 +1,14 @@
+Config { font = "xft:DejaVu Sans Mono:size=8"
+       , bgColor = "black"
+       , fgColor = "white"
+       , position = Top 
+       , commands = [ Run MultiCpu ["-L","3","-H","50","--normal","#429942","--high","#A36666","-t","Cpu: <total0>%/<total1>%/<total2>%/<total3>%/<total4>%/<total5>%/<total6>%/<total7>%"] 10
+                    , Run Memory ["-t","Mem: <usedratio>%"] 10
+                    , Run StdinReader
+                    , Run Network "eth0" ["-t", "<dev> U/D: <tx>/<rx> KB/s"] 10
+                    , Run Date "%A %B %d, %Y" "date" 10
+                    ]
+       , sepChar = "%"
+       , alignSep = "}{"
+       , template = " %StdinReader% }{ %eth0% | %multicpu% | %memory% | %date%"
+       }

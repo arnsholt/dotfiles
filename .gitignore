@@ -2,3 +2,6 @@
 # known_hosts?
 dot.ssh/known_hosts
 dot.ssh/id_*
+# Ignore everything in dot.xmonad, exept xmonad.hs
+dot.xmonad/*
+!dot.xmonad/xmonad.hs
