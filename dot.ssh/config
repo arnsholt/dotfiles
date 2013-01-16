@@ -5,8 +5,13 @@ ForwardAgent yes
 Host 80.203.170.54
 User arne
 
+Host *.uio.no
+User arnskj
+
 Host sh.titan
+User arnskj
 ForwardX11 yes
 
 Host login.ifi
+User arnskj
 ForwardX11 yes
