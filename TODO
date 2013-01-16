@@ -3,6 +3,6 @@
 - Use github.com/josephwecker/bashrc_dispatch to handle various kinds of login
   (most notably, move the stty command from .bashrc to interactive-only).
 - Add more dotfiles
-    - .xmonad/
     - irssi config? (but that might have passwords in it). Hmm...
 - Make sure repo and various machines are (more or less) in sync
+- Dry-run functionality?
