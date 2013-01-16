@@ -9,7 +9,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
 import Graphics.X11.Xlib
-import IO (Handle, hPutStrLn) 
+import System.IO (Handle, hPutStrLn)
 
 import XMonad.Actions.UpdatePointer
 
