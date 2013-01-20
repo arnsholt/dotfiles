@@ -5,7 +5,12 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-. ~/.bash_completion
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+elif [ -f ~/.bash_completion ]; then
+    . ~/.bash_completion
+fi
+
 if [ -d ~/.bash_completion.d ]; then
     for f in ~/.bash_completion.d/*; do
         . $f
@@ -17,9 +22,9 @@ if [ -f ${LOGONROOT}/dot.bashrc ]; then
     . ${LOGONROOT}/dot.bashrc
 fi
 
-eval `dircolors ~/.dircolors`
+test -f ~/.dircolors && eval `dircolors ~/.dircolors`
 
-source ~/perl5/perlbrew/etc/bashrc
+test -e ~/perl5 && source ~/perl5/perlbrew/etc/bashrc
 
 stty stop undef
 
