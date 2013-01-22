@@ -25,3 +25,6 @@
 [submodule "bashrc_dispatch"]
 	path = bashrc_dispatch
 	url = https://github.com/josephwecker/bashrc_dispatch.git
+[submodule "bash-tap"]
+	path = bash-tap
+	url = https://github.com/illusori/bash-tap.git

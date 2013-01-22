@@ -2,3 +2,8 @@ This repository uses git submodules to track 3rd party code. To set them up,
 run:
 $ git submodule init
 $ git submodule update
+
+There are a couple of tests for the install script even (imagine that!). Run
+them with the prove command (which should come with your installation of
+Perl):
+$ prove t/
