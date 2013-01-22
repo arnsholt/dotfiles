@@ -99,7 +99,6 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask .|. shiftMask, xK_c     ), kill)
     --, ((modMask .|. shiftMask, xK_z     ), spawn "gnome-screensaver-command -l")
     , ((0                    , xK_F12   ), spawn "gnome-screensaver-command -l")
-    , ((modMask .|. shiftMask, xK_m     ), spawn "spotify")
 
     -- layouts
     , ((modMask,               xK_space ), sendMessage NextLayout)
@@ -117,6 +116,7 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask,               xK_j     ), windows W.focusDown)
     , ((modMask,               xK_k     ), windows W.focusUp)
     , ((modMask,               xK_m     ), windows W.focusMaster)
+    , ((modMask .|. shiftMask, xK_m     ), windows W.shiftMaster)
 
     -- swapping
     , ((modMask .|. shiftMask, xK_Return), windows W.swapMaster)
