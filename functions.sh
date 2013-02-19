@@ -1,9 +1,13 @@
 #!/bin/bash
 
+function diag() {
+    echo "# $1"
+}
+
 function backup() {
     file=$1
     shortname=$(basename "$file")
-    echo "Making backup of $shortname"
+    diag "Making backup of $shortname"
     mv "$file" "$file.$now"
 }
 
@@ -17,7 +21,7 @@ function install() {
     if [ -L "$fullfile" ]; then
         realfile=$(readlink -f "$fullfile")
         if [ "$realfile" = "$PWD/$src" ]; then
-            echo "# Ignoring $target: Already linked";
+            diag "Ignoring $target: Already linked";
             continue
         fi
     fi

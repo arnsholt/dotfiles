@@ -1,21 +1,29 @@
 #!/bin/bash
 
-. functions.sh
-
 WHERE=$(dirname $0)
 cd "$WHERE"
+
+. functions.sh
 
 now=$(date '+%Y%m%d%H%M')
 for file in dot.*; do
     shortname=$(echo "$file" | sed 's/^dot//')
 
-    install "$file" "$HOME" "$shortname"
-
     # The .ssh directory and its contents require some special logic, since
-    # git doesn't respect modes (AFAICT).
+    # SSH really doesn't seem to like the directory itself being a symlink.
     if [ "$shortname" = ".ssh" ]; then
-        echo "Fixing modes on ~/.ssh/*"
-        chmod 700 $HOME/.ssh
-        chmod 600 $HOME/.ssh/*
+        if [ ! -e "$HOME/.ssh" ]; then
+            diag "Creating ~/.ssh"
+            mkdir "$HOME/.ssh"
+            chmod 700 "$HOME/.ssh"
+        fi
+
+        for f in "$file/"*; do
+            install "$f" "$HOME/.ssh" "$(basename $f)"
+        done
+
+        continue
     fi
+
+    install "$file" "$HOME" "$shortname"
 done
