@@ -1,0 +1,30 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+
+if [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+elif [ -f ~/.bash_completion ]; then
+    . ~/.bash_completion
+fi
+
+if [ -d ~/.bash_completion.d ]; then
+    for f in ~/.bash_completion.d/*; do
+        . $f
+    done
+fi
+
+test -f ~/.dircolors && eval `dircolors ~/.dircolors`
+
+stty stop undef
+
+alias alisp="rlwrap alisp"
+alias vi=vim
+
+export SQLHOST=mysql.ifi SQLUSER=arnskj SQLDB=arnskj
+export PS1="[\u@\h \w]\$ "
+export EDITOR=vim
+export BROWSER=opera

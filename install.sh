@@ -27,3 +27,10 @@ for file in dot.*; do
 
     install "$file" "$HOME" "$shortname"
 done
+
+# Special handling for .bash*
+
+for f in rc _profile _login; do
+    file=".bash$f"
+    install "bashrc_dispatch/bashrc_dispatch"  "$HOME" "$file"
+done
