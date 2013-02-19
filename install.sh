@@ -3,33 +3,34 @@
 WHERE=$(dirname $0)
 cd "$WHERE"
 
+. functions.sh
+
 now=$(date '+%Y%m%d%H%M')
 for file in dot.*; do
-    file=$(echo "$file" | sed 's/^dot//')
-    fullfile="$HOME/$file"
-    dotfile="$PWD/dot$file"
-
-    # Ignore files that are already linked to the repository.
-    if [ -L "$fullfile" ]; then
-        realfile=$(readlink -f "$fullfile")
-        if [ "$realfile" = "$dotfile" ]; then
-            echo "# Ignoring $file: Already linked";
-            continue
-        fi
-    fi
-
-    if [ -e "$fullfile" ]; then
-        echo "# Making backup of $file"
-        mv "$fullfile" "$fullfile.$now"
-    fi
-
-    ln -s "$dotfile" "$fullfile"
+    shortname=$(echo "$file" | sed 's/^dot//')
 
     # The .ssh directory and its contents require some special logic, since
-    # git doesn't respect modes (AFAICT).
-    if [ "$file" = ".ssh" ]; then
-        echo "Fixing modes on ~/.ssh/*"
-        chmod 700 $HOME/.ssh
-        chmod 600 $HOME/.ssh/*
+    # SSH really doesn't seem to like the directory itself being a symlink.
+    if [ "$shortname" = ".ssh" ]; then
+        if [ ! -e "$HOME/.ssh" ]; then
+            diag "Creating ~/.ssh"
+            mkdir "$HOME/.ssh"
+            chmod 700 "$HOME/.ssh"
+        fi
+
+        for f in "$file/"*; do
+            install "$f" "$HOME/.ssh" "$(basename $f)"
+        done
+
+        continue
     fi
+
+    install "$file" "$HOME" "$shortname"
+done
+
+# Special handling for .bash*
+
+for f in rc _profile _login; do
+    file=".bash$f"
+    install "bashrc_dispatch/bashrc_dispatch"  "$HOME" "$file"
 done
