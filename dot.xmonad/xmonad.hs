@@ -8,7 +8,6 @@ import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
-import Graphics.X11.Xlib
 import IO (Handle, hPutStrLn) 
 
 import XMonad.Actions.UpdatePointer
@@ -52,7 +51,7 @@ manageHook' :: ManageHook
 manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks
 
 logHook' :: Handle ->  X ()
-logHook' h = (dynamicLogWithPP $ xmobarPP { ppSep = " | ", ppTitle = id, ppOutput = hPutStrLn h }) >> updatePointer (Relative 0.5 0.5)
+logHook' h = (dynamicLogWithPP $ xmobarPP { ppSep = " | ", ppTitle = id, ppCurrent = wrap "[" "]", ppOutput = hPutStrLn h }) >> updatePointer (Relative 0.5 0.5)
 
 layoutHook' = customLayout
 
@@ -92,12 +91,9 @@ keys' :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask,               xK_Return), spawn $ XMonad.terminal conf) 
-    , ((modMask,               xK_p     ), spawn "dmenu_run")
-    --, ((modMask,               xK_o	    ), spawn "opera")
-    --, ((modMask .|. shiftMask, xK_o	    ), spawn "opera -newwindow")
+    , ((modMask,               xK_p     ), spawn "$(yeganesh -x)")
     , ((modMask,               xK_o	    ), spawn "opera -newwindow")
     , ((modMask .|. shiftMask, xK_c     ), kill)
-    --, ((modMask .|. shiftMask, xK_z     ), spawn "gnome-screensaver-command -l")
     , ((0                    , xK_F12   ), spawn "gnome-screensaver-command -l")
 
     -- layouts
