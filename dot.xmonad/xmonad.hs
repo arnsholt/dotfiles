@@ -109,18 +109,13 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- refresh
     , ((modMask,               xK_n     ), refresh)
 
-    -- focus
-    , ((modMask,               xK_Tab   ), windows W.focusDown)
-    , ((modMask,               xK_j     ), windows W.focusDown)
-    , ((modMask,               xK_k     ), windows W.focusUp)
-    , ((modMask,               xK_m     ), windows W.focusMaster)
-    , ((modMask .|. shiftMask, xK_m     ), windows W.shiftMaster)
-
-    -- swapping
-    -- TODO: Use modMask+Up/Down to swap
-    , ((modMask .|. shiftMask, xK_Return), windows W.swapMaster)
-    , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  )
-    , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    )
+    -- focus and swapping
+    , ((modMask,               xK_Up    ), windows W.focusUp)
+    , ((modMask,               xK_Down  ), windows W.focusDown)
+    , ((modMask .|. shiftMask, xK_Up    ), windows W.swapUp)
+    , ((modMask .|. shiftMask, xK_Down  ), windows W.swapDown)
+    , ((modMask,               xK_Home  ), windows W.focusMaster)
+    , ((modMask .|. shiftMask, xK_Home  ), windows W.shiftMaster)
 
     -- increase or decrease number of windows in the master area
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
