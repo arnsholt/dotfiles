@@ -90,11 +90,13 @@ modMask' = mod4Mask
 keys' :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
-    [ ((modMask,               xK_Return), spawn $ XMonad.terminal conf) 
-    , ((modMask,               xK_p     ), spawn "$(yeganesh -x)")
-    , ((modMask,               xK_o	    ), spawn "opera -newwindow")
-    , ((modMask .|. shiftMask, xK_c     ), kill)
-    , ((0                    , xK_F12   ), spawn "gnome-screensaver-command -l")
+    [ ((modMask,               xK_Return   ), spawn $ XMonad.terminal conf)
+    , ((modMask,               xK_p        ), spawn "$(yeganesh -x)")
+    , ((modMask,               xK_o        ), spawn "opera -newwindow")
+    , ((modMask .|. shiftMask, xK_c        ), kill)
+    , ((0                    , xK_F12      ), spawn "gnome-screensaver-command -l")
+    , ((modMask,               xK_Page_Up  ), spawn "amixer -q set Master 2%+")
+    , ((modMask,               xK_Page_Down), spawn "amixer -q set Master 2%-")
 
     -- layouts
     , ((modMask,               xK_space ), sendMessage NextLayout)
@@ -107,17 +109,13 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- refresh
     , ((modMask,               xK_n     ), refresh)
 
-    -- focus
-    , ((modMask,               xK_Tab   ), windows W.focusDown)
-    , ((modMask,               xK_j     ), windows W.focusDown)
-    , ((modMask,               xK_k     ), windows W.focusUp)
-    , ((modMask,               xK_m     ), windows W.focusMaster)
-    , ((modMask .|. shiftMask, xK_m     ), windows W.shiftMaster)
-
-    -- swapping
-    , ((modMask .|. shiftMask, xK_Return), windows W.swapMaster)
-    , ((modMask .|. shiftMask, xK_j     ), windows W.swapDown  )
-    , ((modMask .|. shiftMask, xK_k     ), windows W.swapUp    )
+    -- focus and swapping
+    , ((modMask,               xK_Up    ), windows W.focusUp)
+    , ((modMask,               xK_Down  ), windows W.focusDown)
+    , ((modMask .|. shiftMask, xK_Up    ), windows W.swapUp)
+    , ((modMask .|. shiftMask, xK_Down  ), windows W.swapDown)
+    , ((modMask,               xK_Home  ), windows W.focusMaster)
+    , ((modMask .|. shiftMask, xK_Home  ), windows W.shiftMaster)
 
     -- increase or decrease number of windows in the master area
     , ((modMask              , xK_comma ), sendMessage (IncMasterN 1))
