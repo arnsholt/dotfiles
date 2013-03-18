@@ -29,7 +29,7 @@ import XMonad.Actions.CycleWS
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h <- spawnPipe "~/sw/bin/xmobar"
+       h <- spawnPipe "xmobar"
        xmonad $ defaultConfig 
               { workspaces = workspaces'
               , modMask = modMask'
