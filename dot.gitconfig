@@ -10,5 +10,6 @@
 [alias]
     s = status
     d = diff
+    idxd = diff --cached
 [core]
 	excludesfile = /ltg/arnskj/.cvsignore
