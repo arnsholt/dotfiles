@@ -8,7 +8,7 @@ import XMonad
 import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
-import IO (Handle, hPutStrLn) 
+import System.IO (Handle, hPutStrLn)
 
 import XMonad.Actions.UpdatePointer
 
@@ -29,7 +29,7 @@ import XMonad.Actions.CycleWS
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h <- spawnPipe "~/sw/bin/xmobar"
+       h <- spawnPipe "xmobar"
        xmonad $ defaultConfig 
               { workspaces = workspaces'
               , modMask = modMask'
