@@ -17,6 +17,8 @@ if [ -d ~/.bash_completion.d ]; then
     done
 fi
 
+test -f ~/.bashrc_local && . ~/.bashrc_local
+
 test -f ~/.dircolors && eval `dircolors ~/.dircolors`
 
 stty stop undef
