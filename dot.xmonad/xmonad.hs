@@ -18,6 +18,7 @@ import XMonad.Util.Run (spawnPipe)
 -- hooks
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 
 -- layouts
@@ -48,7 +49,7 @@ main = do
 -------------------------------------------------------------------------------
 -- Hooks --
 manageHook' :: ManageHook
-manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks
+manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks <+> (isFullscreen --> doFullFloat)
 
 logHook' :: Handle ->  X ()
 logHook' h = (dynamicLogWithPP $ xmobarPP { ppSep = " | ", ppTitle = id, ppCurrent = wrap "[" "]", ppOutput = hPutStrLn h }) >> updatePointer (Relative 0.5 0.5)
