@@ -2,6 +2,9 @@
 # known_hosts?
 dot.ssh/*
 !dot.ssh/config
+dot.vim/.netrwhist
+# XXX: Might actually be useful to track spelling files...
+dot.vim/spell/
 # Ignore everything in dot.xmonad, exept xmonad.hs
 dot.xmonad/*
 !dot.xmonad/xmonad.hs
