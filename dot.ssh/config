@@ -9,9 +9,11 @@ Host *.uio.no
 User arnskj
 
 Host sh.titan
+HostName sh.titan.uio.no
 User arnskj
 ForwardX11 yes
 
 Host login.ifi
+HostName login.ifi.uio.no
 User arnskj
 ForwardX11 yes
