@@ -14,9 +14,4 @@ export XLEPATH=~/sw/app/xle
 export PATH=${XLEPATH}/bin:$PATH
 export LD_LIBRARY_PATH=${XLEPATH}/lib:$LD_LIBRARY_PATH
 
-export LOGONROOT=~/logon
-if [ -f ${LOGONROOT}/dot.bashrc ]; then
-    . ${LOGONROOT}/dot.bashrc
-fi
-
 test -e ~/perl5 && source ~/perl5/perlbrew/etc/bashrc
