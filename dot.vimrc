@@ -56,6 +56,7 @@ set nojoinspaces
 
 let g:tex_flavor='latex'
 let g:Tex_Env_table="\\begin{table}\<cr>\\centering\<cr>\\begin{tabular}{<+dimensions+>}\<cr><++>\<cr>\\end{tabular}\<cr>\\caption{<+Caption text+>}\<cr>\\label{tbl:<+label+>}\<cr>\\end{table}"
+let g:Tex_Env_figure="\\begin{figure}\<cr>\\includegraphics{<+file+>}\<cr>\\caption{<+caption+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}"
 let g:Tex_Env_frame="\\begin{frame}{<+title+>}\<cr>\\begin{itemize}\<cr>\\item <++>\<cr>\\end{itemize}\<cr>\\end{frame}"
 let g:Tex_Com_o="\\o{}"
 let g:Tex_Com_ctable="\\ctable[botcap,\<cr>caption={<+caption+>},\<cr>label=tbl:<+label+>\<cr>]{<+colspec+>}{<+notes+>}{\<cr>    \\FL\<cr><+table+>\<cr>\\LL\<cr>}"
