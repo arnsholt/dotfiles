@@ -20,6 +20,7 @@ import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
+import XMonad.Hooks.EwmhDesktops
 
 -- layouts
 import XMonad.Layout.NoBorders
@@ -44,6 +45,7 @@ main = do
               , manageHook = manageHook'
               , focusFollowsMouse = True
               , startupHook = setWMName "LG3D"
+              , handleEventHook = fullscreenEventHook
               }
 
 -------------------------------------------------------------------------------
