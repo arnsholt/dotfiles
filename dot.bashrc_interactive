@@ -26,7 +26,19 @@ stty stop undef
 alias alisp="rlwrap alisp"
 alias vi=vim
 
+function maybejobs() {
+    njobs=$(jobs | wc -l)
+    if [ $njobs -gt 0 ]; then
+        if [ $njobs -gt 1 ]; then s=s; fi
+        echo ", $njobs job$s"
+    fi
+}
+
+function prompter() {
+    export PS1="[\u@\h \w$(maybejobs)]\$ "
+}
+
 export SQLHOST=mysql.ifi SQLUSER=arnskj SQLDB=arnskj
-export PS1="[\u@\h \w]\$ "
 export EDITOR=vim
 export BROWSER=opera
+PROMPT_COMMAND=prompter
