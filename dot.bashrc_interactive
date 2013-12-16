@@ -26,7 +26,7 @@ stty stop undef
 alias alisp="rlwrap alisp"
 alias vi=vim
 
-function maybejobs() {
+function _jobs() {
     njobs=$(jobs | wc -l)
     if [ $njobs -gt 0 ]; then
         if [ $njobs -gt 1 ]; then s=s; fi
@@ -34,8 +34,31 @@ function maybejobs() {
     fi
 }
 
+function _gitstatus() {
+    branch="$(git symbolic-ref HEAD 2>/dev/null)" || branch=""
+    branch=${branch##refs/heads/}
+    remote="$(git rev-parse --verify $branch@{upstream} --symbolic-full-name 2>/dev/null)"
+    remote=${remote##refs/remotes/}
+    gitstatus=""
+
+    if [[ -n $remote ]]; then
+        ahead=$(git rev-list $branch@{upstream}..HEAD 2>/dev/null | wc -l)
+        behind=$(git rev-list HEAD..$branch@{upstream} 2>/dev/null | wc -l)
+        (( $ahead ))  && gitstatus="$gitstatus+$ahead"
+        (( $behind )) && gitstatus="$gitstatus-$behind"
+    fi
+
+    test -n "$gitstatus" && echo ", $gitstatus of $remote"
+
+    stashes=$(git stash list 2>/dev/null | wc -l)
+    if [ $stashes -gt 0 ]; then
+        if [ $stashes -gt 1 ]; then s=es; fi
+        echo ", $stashes stash$s"
+    fi
+}
+
 function prompter() {
-    export PS1="[\u@\h \w$(maybejobs)]\$ "
+    export PS1="[\u@\h \w$(_jobs)$(_gitstatus)]\$ "
 }
 
 export SQLHOST=mysql.ifi SQLUSER=arnskj SQLDB=arnskj
