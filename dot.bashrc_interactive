@@ -48,7 +48,7 @@ function _gitstatus() {
         (( $behind )) && gitstatus="$gitstatus-$behind"
     fi
 
-    test -n "$gitstatus" && echo ", $gitstatus of $remote"
+    test -n "$gitstatus" && echo -n ", $gitstatus of $remote"
 
     stashes=$(git stash list 2>/dev/null | wc -l)
     if [ $stashes -gt 0 ]; then
