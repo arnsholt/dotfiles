@@ -94,6 +94,7 @@ keys' :: XConfig Layout -> M.Map (KeyMask, KeySym) (X ())
 keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- launching and killing programs
     [ ((modMask,               xK_Return   ), spawn $ XMonad.terminal conf)
+    , ((modMask,               xK_KP_Enter ), spawn $ XMonad.terminal conf)
     , ((modMask,               xK_p        ), spawn "$(yeganesh -x)")
     , ((modMask,               xK_o        ), spawn "opera -newwindow")
     , ((modMask .|. shiftMask, xK_c        ), kill)
