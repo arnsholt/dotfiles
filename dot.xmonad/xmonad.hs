@@ -101,6 +101,9 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((0                    , xK_F12      ), spawn "gnome-screensaver-command -l")
     , ((modMask,               xK_Page_Up  ), spawn "amixer -q set Master 2%+")
     , ((modMask,               xK_Page_Down), spawn "amixer -q set Master 2%-")
+    , ((0      ,               xK_F9       ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause >/dev/null")
+    , ((0      ,               xK_F10      ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous >/dev/null")
+    , ((0      ,               xK_F11      ), spawn "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next >/dev/null")
 
     -- layouts
     , ((modMask,               xK_space ), sendMessage NextLayout)
