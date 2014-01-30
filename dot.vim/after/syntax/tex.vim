@@ -4,4 +4,4 @@ call TexNewMathZone("M", "IEEEeqnarray", 1)
 delcommand HiLink
 
 " Make \citeN and \citeNP be highlighted as citations.
-syn match  texRefZone '\\citeNP\=' nextgroup=texRefOption,texCite
+syn match  texRefZone '\\cite\(NP\=\|gen\)' nextgroup=texRefOption,texCite
