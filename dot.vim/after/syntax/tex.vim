@@ -7,3 +7,5 @@ delcommand HiLink
 syn match  texRefZone '\\cite\(NP\=\|gen\)' nextgroup=texRefOption,texCite
 " Make \Cite* highlight as citations too. PCRE regex: /\\Cite(NP?|gen)?/
 syn match  texRefZone '\\Cite\(NP\=\|gen\)\=' nextgroup=texRefOption,texCite
+" Make \newcite highlight as citations too. PCRE Regex: /\\newcite/
+syn match  texRefZone '\\newcite' nextgroup=texRefOption,texCite
