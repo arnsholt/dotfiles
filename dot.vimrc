@@ -64,6 +64,8 @@ let g:Tex_Env_block="\\begin{block}{<+title+>}\<cr>\\begin{itemize}\<cr>\\item <
 let g:Tex_Com_o="\\o{}"
 let g:Tex_Com_ctable="\\ctable[botcap,\<cr>caption={<+caption+>},\<cr>label=tbl:<+label+>\<cr>]{<+colspec+>}{<+notes+>}{\<cr>    \\FL\<cr><+table+>\<cr>\\LL\<cr>}"
 let g:Tex_Com_multicolumn="\\multicolumn{<+cols+>}{<+colspec+>}{<+row+>}"
+let g:Tex_FoldedEnvironments=",frame"
+let g:Tex_FoldedMist="preamble"
 
 let g:slimv_swank_cmd="! tmux new -d 'mlisp -L \"/ltg/arnskj/.vim/bundle/slimv/slime/start-swank.lisp\"'"
 
