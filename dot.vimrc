@@ -81,37 +81,8 @@ dig n. 7751
 dig s. 7779
 dig hv 7723
 
-function! Printit()
-    echo synIDattr(synID(line("."), col("."), 1), "name") "(".synID(line("."), col("."), 1).")"
-    return synID(line("."), col("."), 1)
-endfunction
-
-map <expr> <F2> Printit()
-imap <expr> <F2> Printit()
-
-function! NonComment(nonComment, comment, style)
-    "echo "id=".synID(line("."), col("."), 1)
-    echo synIDattr(synID(line("."), col("."), 1), "name")
-    let cur = synIDattr(synID(line("."), col("."), 1), "name")
-    "return "c"
-    if a:style == cur
-        "return a:comment
-        return "a"
-    else
-        "return a:nonComment
-        return "b"
-    endif
-endfunction
-
 augroup dotvimrc_filetype
     au!
-    " TODO: Doesn't quite work ATM.
-    "au FileType tex inoremap <expr> æ NonComment("{\\ae}", "æ", "texComment")
-    "au FileType tex imap <expr> ø NonComment("{\\o}",  "ø", "texComment")
-    "au FileType tex imap <expr> å NonComment("{\\aa}", "å", "texComment")
-    "au FileType tex imap <expr> Æ NonComment("{\\AE}", "Æ", "texComment")
-    "au FileType tex imap <expr> Ø NonComment("{\\O}",  "Ø", "texComment")
-    "au FileType tex imap <expr> Å NonComment("{\\AA}", "Å", "texComment")
     au BufNewFile,BufRead .tmux.conf*,tmux.conf* setf tmux
 augroup end
 
