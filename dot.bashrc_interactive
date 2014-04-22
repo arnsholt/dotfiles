@@ -61,7 +61,6 @@ function prompter() {
     export PS1="[\u@\h \w$(_jobs)$(_gitstatus)]\$ "
 }
 
-export SQLHOST=mysql.ifi SQLUSER=arnskj SQLDB=arnskj
 export EDITOR=vim
 export BROWSER=opera
 PROMPT_COMMAND=prompter
