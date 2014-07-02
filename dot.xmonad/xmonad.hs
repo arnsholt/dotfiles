@@ -40,6 +40,7 @@ main = do
               , focusedBorderColor = focusedBorderColor'
               , terminal = terminal'
               , keys = keys'
+              , mouseBindings = \conf -> M.union (mouseBindings defaultConfig conf) (mouse' conf)
               , logHook = logHook' h 
               , layoutHook = layoutHook'
               , manageHook = manageHook'
@@ -155,5 +156,11 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
             | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
             , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+
+mouse' :: XConfig Layout -> M.Map (ButtonMask, Button) (Window -> X())
+mouse' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
+    [ ((modMask, button4), \_ -> windows W.focusUp)
+    , ((modMask, button5), \_ -> windows W.focusDown)
+    ]
 
 -------------------------------------------------------------------------------
