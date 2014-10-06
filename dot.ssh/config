@@ -10,10 +10,14 @@ User arnskj
 
 Host sh.titan
 HostName sh.titan.uio.no
-User arnskj
 ForwardX11 yes
 
 Host login.ifi
 HostName login.ifi.uio.no
-User arnskj
 ForwardX11 yes
+
+Host vi.ifi
+HostName vi.ifi.uio.no
+
+Host abel
+HostName abel.uio.no
