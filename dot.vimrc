@@ -32,8 +32,10 @@ map <silent> <C-D> :set invpaste<CR>
 " Heresy!
 map <C-A> ^
 imap <C-A> <C-O><C-A>
+cmap <C-A> <Home>
 map <C-E> $
 imap <C-E> <C-O><C-E>
+cmap <C-E> <End>
 
 set autoindent
 set backspace=2
