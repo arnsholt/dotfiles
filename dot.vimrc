@@ -57,6 +57,10 @@ set textwidth=78
 set nojoinspaces
 set nowrap
 set listchars+=precedes:<,extends:>
+" Case insensitive regexes, unless the regex contains both lower and
+" upper-case characters.
+set ignorecase
+set smartcase
 
 let g:tex_flavor='latex'
 let g:Tex_Env_table="\\begin{table}\<cr>\\centering\<cr>\\begin{tabular}{<+dimensions+>}\<cr><++>\<cr>\\end{tabular}\<cr>\\caption{<+Caption text+>}\<cr>\\label{tbl:<+label+>}\<cr>\\end{table}"
