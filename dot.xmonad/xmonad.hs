@@ -18,6 +18,7 @@ import XMonad.Util.Run (spawnPipe)
 -- hooks
 import XMonad.Hooks.ManageDocks
 import XMonad.Hooks.DynamicLog
+import XMonad.Hooks.ICCCMFocus
 import XMonad.Hooks.ManageHelpers
 import XMonad.Hooks.SetWMName
 import XMonad.Hooks.EwmhDesktops
@@ -41,7 +42,7 @@ main = do
               , terminal = terminal'
               , keys = keys'
               , mouseBindings = \conf -> M.union (mouseBindings defaultConfig conf) (mouse' conf)
-              , logHook = logHook' h 
+              , logHook = updatePointer (Relative 0.5 0.5) >> takeTopFocus
               , layoutHook = layoutHook'
               , manageHook = manageHook'
               , focusFollowsMouse = True
@@ -53,9 +54,6 @@ main = do
 -- Hooks --
 manageHook' :: ManageHook
 manageHook' = (doF W.swapDown) <+> manageHook defaultConfig <+> manageDocks <+> (isFullscreen --> doFullFloat)
-
-logHook' :: Handle ->  X ()
-logHook' h = (dynamicLogWithPP $ xmobarPP { ppSep = " | ", ppTitle = id, ppCurrent = wrap "[" "]", ppOutput = hPutStrLn h }) >> updatePointer (Relative 0.5 0.5)
 
 layoutHook' = customLayout
 
