@@ -65,13 +65,14 @@ set smartcase
 let g:tex_flavor='latex'
 let g:Tex_Env_table="\\begin{table}\<cr>\\centering\<cr>\\begin{tabular}{<+dimensions+>}\<cr><++>\<cr>\\end{tabular}\<cr>\\caption{<+Caption text+>}\<cr>\\label{tbl:<+label+>}\<cr>\\end{table}"
 let g:Tex_Env_figure="\\begin{figure}\<cr>\\includegraphics{<+file+>}\<cr>\\caption{<+caption+>}\<cr>\\label{fig:<+label+>}\<cr>\\end{figure}"
-let g:Tex_Env_frame="\\begin{frame}{<+title+>}\<cr>\\begin{itemize}\<cr>\\item <++>\<cr>\\end{itemize}\<cr>\\end{frame}"
+let g:Tex_Env_frame="\\begin{frame}{<+title+>}\<cr><+body+>\<cr>\\end{frame}"
 let g:Tex_Env_block="\\begin{block}{<+title+>}\<cr>\\begin{itemize}\<cr>\\item <++>\<cr>\\end{itemize}\<cr>\\end{block}"
 let g:Tex_Com_o="\\o{}"
 let g:Tex_Com_ctable="\\ctable[botcap,\<cr>caption={<+caption+>},\<cr>label=tbl:<+label+>\<cr>]{<+colspec+>}{<+notes+>}{\<cr>    \\FL\<cr><+table+>\<cr>\\LL\<cr>}"
 let g:Tex_Com_multicolumn="\\multicolumn{<+cols+>}{<+colspec+>}{<+row+>}"
 let g:Tex_FoldedEnvironments=",frame"
 let g:Tex_FoldedMisc="preamble"
+let g:Tex_SmartKeyQuote=0
 
 let g:slimv_swank_cmd="! tmux new -d 'mlisp -L \"/ltg/arnskj/.vim/bundle/slimv/slime/start-swank.lisp\"'"
 
