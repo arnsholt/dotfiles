@@ -15,3 +15,7 @@ export PATH=${XLEPATH}/bin:$PATH
 export LD_LIBRARY_PATH=${XLEPATH}/lib:$LD_LIBRARY_PATH
 
 test -e ~/perl5 && source ~/perl5/perlbrew/etc/bashrc
+
+function wallpaper() {
+    feh --bg-center --no-fehbg ~/wallpapers/"$(ls --color=never -1 ~/wallpapers | sort -R | head -n 1)"
+}
