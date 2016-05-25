@@ -154,11 +154,14 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     -- mod-shift-[1..9] %! Move client to workspace N
     [((m .|. modMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) ([xK_1 .. xK_9] ++ [xK_0, xK_a, xK_s, xK_d, xK_f])
-        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask)]]
+        , (f, m) <- [(W.greedyView, 0), (W.shift, shiftMask), (shiftAndFollow, controlMask)]]
     ++
     [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
             | (key, sc) <- zip [xK_w, xK_e, xK_r] [0..]
             , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+
+shiftAndFollow :: (Ord a, Eq s, Eq i) => i -> W.StackSet i l a s sd -> W.StackSet i l a s sd
+shiftAndFollow i = W.greedyView i . W.shift i
 
 mouse' :: XConfig Layout -> M.Map (ButtonMask, Button) (Window -> X())
 mouse' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
