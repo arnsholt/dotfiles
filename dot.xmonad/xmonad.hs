@@ -9,6 +9,7 @@ import qualified XMonad.StackSet as W
 import qualified Data.Map as M
 import System.Exit
 import System.IO (Handle, hPutStrLn)
+import System.Taffybar.Hooks.PagerHints (pagerHints)
 
 import XMonad.Actions.UpdatePointer
 
@@ -32,8 +33,8 @@ import XMonad.Actions.CycleWS
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h <- spawnPipe "xmobar"
-       xmonad $ defaultConfig 
+       spawnPipe "taffybar"
+       xmonad $ ewmh $ pagerHints $ defaultConfig
               { workspaces = workspaces'
               , modMask = modMask'
               , borderWidth = borderWidth'
