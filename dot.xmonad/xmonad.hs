@@ -147,6 +147,8 @@ keys' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     , ((modMask              , xK_Right ), nextWS)
     , ((modMask .|. shiftMask, xK_Right ), shiftToNext)
     , ((modMask,               xK_Tab   ), toggleWS)
+    , ((modMask .|. controlMask, xK_Left  ), shiftToPrev >> prevWS)
+    , ((modMask .|. controlMask, xK_Right ), shiftToNext >> nextWS)
     ]
     ++
     -- mod-[1..9] %! Switch to workspace N
