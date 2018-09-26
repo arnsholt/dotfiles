@@ -28,3 +28,6 @@
 [submodule "bash-tap"]
 	path = bash-tap
 	url = https://github.com/illusori/bash-tap.git
+[submodule "rust.vim"]
+	path = dot.vim/bundle/rust.vim
+	url = https://github.com/rust-lang/rust.vim.git
